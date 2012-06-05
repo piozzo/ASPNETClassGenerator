@@ -228,7 +228,6 @@ namespace ASPNETClassGenerator
                 sw.WriteLine("\t\t{");
                 sw.WriteLine("\t\t\tcnMySql.Open();");
                 sw.WriteLine();
-
                 sw.WriteLine("\t\t\tSystem.Text.StringBuilder sb = new System.Text.StringBuilder();");
                 sw.WriteLine("\t\t\tsb.Append(\"UPDATE " + dbName + "." + tableName + " \");");
                 sw.WriteLine("\t\t\tsb.Append(\"SET \");");
