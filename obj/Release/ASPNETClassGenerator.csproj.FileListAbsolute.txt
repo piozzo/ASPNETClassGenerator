@@ -1,0 +1,6 @@
+C:\Users\Administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\bin\Release\ASPNETClassGenerator.exe.config
+C:\Users\Administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\bin\Release\ASPNETClassGenerator.exe
+C:\Users\Administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\bin\Release\ASPNETClassGenerator.pdb
+C:\Users\Administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\obj\Release\ASPNETClassGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\obj\Release\ASPNETClassGenerator.exe
+C:\Users\Administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\obj\Release\ASPNETClassGenerator.pdb
