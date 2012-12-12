@@ -14,7 +14,7 @@ namespace ASPNETClassGenerator
 
         public enum FieldType
         {
-            INT, VARCHAR, ENUM, DECIMAL, DATE, TIME, DATETIME, BIT, DOUBLE
+            INT, VARCHAR, ENUM, DECIMAL, DATE, TIME, DATETIME, BIT, DOUBLE, BOOLEAN
         }
 
         public class FieldTypeInfo
@@ -104,6 +104,8 @@ namespace ASPNETClassGenerator
 
                                 parametriDictionaryTypes.Add(fieldName, field.typeName);
 
+                                bool allowsNull = reader["Null"].ToString() == "YES";
+
                                 switch (field.typeName)
                                 {
                                     case FieldType.VARCHAR:
@@ -115,6 +117,7 @@ namespace ASPNETClassGenerator
                                         sw.WriteLine();
                                         break;
                                     case FieldType.BIT:
+                                    case FieldType.BOOLEAN:
                                         sw.WriteLine("\tprivate bool " + privateFieldName + ";");
                                         sw.WriteLine("\tpublic bool " + fieldName + " {");
                                         sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
@@ -123,31 +126,69 @@ namespace ASPNETClassGenerator
                                         sw.WriteLine();
                                         break;
                                     case FieldType.INT:
-                                        sw.WriteLine("\tprivate int " + privateFieldName + ";");
-                                        sw.WriteLine("\tpublic int " + fieldName + " {");
-                                        sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
-                                        sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
-                                        sw.WriteLine("\t}");
-                                        sw.WriteLine();
+                                        if (allowsNull)
+                                        {
+                                            sw.WriteLine("\tprivate int? " + privateFieldName + ";");
+                                            sw.WriteLine("\tpublic int? " + fieldName + " {");
+                                            sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
+                                            sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
+                                            sw.WriteLine("\t}");
+                                            sw.WriteLine();
+                                        }
+                                        else
+                                        {
+                                            sw.WriteLine("\tprivate int " + privateFieldName + ";");
+                                            sw.WriteLine("\tpublic int " + fieldName + " {");
+                                            sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
+                                            sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
+                                            sw.WriteLine("\t}");
+                                            sw.WriteLine();
+                                        }
+                                        
                                         break;
                                     case FieldType.DECIMAL:
                                     case FieldType.DOUBLE:
-                                        sw.WriteLine("\tprivate double " + privateFieldName + ";");
-                                        sw.WriteLine("\tpublic double " + fieldName + " {");
-                                        sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
-                                        sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
-                                        sw.WriteLine("\t}");
-                                        sw.WriteLine();
+                                        if (allowsNull)
+                                        {
+                                            sw.WriteLine("\tprivate double? " + privateFieldName + ";");
+                                            sw.WriteLine("\tpublic double? " + fieldName + " {");
+                                            sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
+                                            sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
+                                            sw.WriteLine("\t}");
+                                            sw.WriteLine();
+                                        }
+                                        else
+                                        {
+                                            sw.WriteLine("\tprivate double " + privateFieldName + ";");
+                                            sw.WriteLine("\tpublic double " + fieldName + " {");
+                                            sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
+                                            sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
+                                            sw.WriteLine("\t}");
+                                            sw.WriteLine();
+                                        }
                                         break;
                                     case FieldType.DATETIME:
                                     case FieldType.DATE:
                                     case FieldType.TIME:
-                                        sw.WriteLine("\tprivate DateTime " + privateFieldName + ";");
-                                        sw.WriteLine("\tpublic DateTime " + fieldName + " {");
-                                        sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
-                                        sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
-                                        sw.WriteLine("\t}");
-                                        sw.WriteLine();
+                                        if (allowsNull)
+                                        {
+                                            sw.WriteLine("\tprivate DateTime? " + privateFieldName + ";");
+                                            sw.WriteLine("\tpublic DateTime? " + fieldName + " {");
+                                            sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
+                                            sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
+                                            sw.WriteLine("\t}");
+                                            sw.WriteLine();
+                                        }
+                                        else
+                                        {
+                                            sw.WriteLine("\tprivate DateTime " + privateFieldName + ";");
+                                            sw.WriteLine("\tpublic DateTime " + fieldName + " {");
+                                            sw.WriteLine("\t\tget { return " + privateFieldName + "; }");
+                                            sw.WriteLine("\t\tset { " + privateFieldName + " = value; } ");
+                                            sw.WriteLine("\t}");
+                                            sw.WriteLine();
+                                        }
+
                                         break;
                                 }
                             }
@@ -278,6 +319,7 @@ namespace ASPNETClassGenerator
                             stringaTemp += "ConvertDBObjectToInt";
                             break;
                         case FieldType.BIT:
+                        case FieldType.BOOLEAN:
                             stringaTemp += "ConvertDBObjectToBool";
                             break;
                         case FieldType.DECIMAL:
@@ -430,6 +472,14 @@ namespace ASPNETClassGenerator
                     fieldInfo.typeSize = int.Parse(characteristcs);
                     fieldInfo.typePrecision = 0;
                 }
+            }
+            else if (mysqlFieldType.StartsWith("bit"))
+            {
+                fieldInfo.typeName = FieldType.BIT;
+            }
+            else if (mysqlFieldType.StartsWith("boolean"))
+            {
+                fieldInfo.typeName = FieldType.BOOLEAN;
             }
             else if (mysqlFieldType.StartsWith("datetime"))
             {
