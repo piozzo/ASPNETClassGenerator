@@ -4,3 +4,10 @@ c:\users\administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\
 c:\users\administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\obj\Debug\ASPNETClassGenerator.csprojResolveAssemblyReference.cache
 c:\users\administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\obj\Debug\ASPNETClassGenerator.exe
 c:\users\administrator\documents\visual studio 11\Projects\ASPNETClassGenerator\ASPNETClassGenerator\obj\Debug\ASPNETClassGenerator.pdb
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\bin\Debug\ASPNETClassGenerator.exe.config
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\obj\Debug\ASPNETClassGenerator.exe
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\obj\Debug\ASPNETClassGenerator.pdb
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\bin\Debug\ASPNETClassGenerator.exe
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\bin\Debug\ASPNETClassGenerator.pdb
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\bin\Debug\MySql.Data.dll
+C:\Users\Francesco\Documents\GitHub\ASPNETClassGenerator\obj\Debug\ASPNETClassGenerator.csprojResolveAssemblyReference.cache
