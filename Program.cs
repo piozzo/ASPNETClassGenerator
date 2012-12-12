@@ -238,8 +238,8 @@ namespace ASPNETClassGenerator
                 sw.WriteLine("\t\t\tSystem.Text.StringBuilder sb = new System.Text.StringBuilder();");
                 sw.WriteLine("\t\t\tsb.Append(\"INSERT INTO " + dbName + "." + tableName + "(" + listaCampi + ")\");");
                 sw.WriteLine("\t\t\tsb.Append(\"VALUES \");");
-                sw.WriteLine("\t\t\tsb.Append(\"(" + listaParametri + ")\"); ");
-                sw.WriteLine("\t\t\tsb.Append(\"select max(iddddd) as idNew from " + dbName + "." + tableName + "; \");");
+                sw.WriteLine("\t\t\tsb.Append(\"(" + listaParametri + ");\"); ");
+                sw.WriteLine("\t\t\tsb.Append(\"select last_insert_id() as idNew from " + dbName + "." + tableName + "; \");");
                 sw.WriteLine();
                 sw.WriteLine("\t\t\tusing (MySqlCommand cmd = new MySqlCommand(sb.ToString(), cnMySql)) ");
                 sw.WriteLine("\t\t\t{");
