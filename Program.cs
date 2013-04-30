@@ -247,7 +247,7 @@ namespace ASPNETClassGenerator
                 sw.WriteLine("\t\t\t\t{");
                 sw.WriteLine("\t\t\t\t\t//cmd.ExecuteNonQuery();");
                 sw.WriteLine("\t\t\t\t\tobject o = ExecuteScalar(cmd);");
-                sw.WriteLine("\t\t\t\t\to = Convert.toInt32(o);");
+                sw.WriteLine("\t\t\t\t\to = Convert.ToInt32(o);");
                 sw.WriteLine("\t\t\t\t}");
                 sw.WriteLine("\t\t\t\tcatch (MySqlException ex) ");
                 sw.WriteLine("\t\t\t\t{");
